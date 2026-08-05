@@ -1,0 +1,5 @@
+node_modules/
+dist/
+generated_code/
+.env
+.DS_Store

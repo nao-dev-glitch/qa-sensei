@@ -1,0 +1,12 @@
+# Node.js 依存関係・ビルド出力
+node_modules/
+dist/
+
+# 環境変数ファイル
+.env
+.env.local
+
+# Phase 2 特有: tsc検証時の一時フォルダ・ログ
+tmp/
+*.log
+
