@@ -1,0 +1,13 @@
+name: 'QA-Sensei'
+description: 'QA-focused PR code review and auto-fix action powered by Gemini API'
+inputs:
+  gemini_api_key:
+    description: 'Gemini API Key'
+    required: true
+  github_token:
+    description: 'GitHub Token'
+    required: true
+runs:
+  using: 'node20'
+  main: 'dist/src/index.js'
+
