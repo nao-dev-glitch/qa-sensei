@@ -63,28 +63,34 @@ jobs:
 MIT License
 
 ## 📁 ディレクトリ構成
+
 ```text
 qa-sensei/
-├── README.md
+├── README.md                     # プロジェクトの概要・使い方
+├── action.yml                    # GitHub Actionの定義ファイル
 ├── package-lock.json
-├── package.json
-├── packages
-│   └── qa-sensei-engine                # 自動判定・修復エンジン(Core Package)
-│       ├── package.json
-│       ├── src
-│       │   ├── engine
-│       │   │   └── codeGenerator.ts    # Gemini APIを活用したコード自動生成・修復
-│       │   ├── index.ts                # エンジンのエントリーポイント
-│       │   ├── services
-│       │   │   ├── parser.ts           # PR差分(diff)等の解析処理
-│       │   │   └── tscRunner.ts        # tscによる静的解析・型チェック実行
-│       │   └── types
-│       │       └── index.ts            # エンジン用型定義
-│       └── tsconfig.json
-└── src                                 # QA思考ロジック・GitHub Actions連携層
-    ├── index.ts                        # アクション全体のエントリーポイント
-    └── services
-        └── qaGeneratorService.ts       # QA観点でのレビュー生成サービス
-
-9 directories, 13 files
+├── package.json                  # ルートの依存関係・ビルドスクリプト
+├── dist/                         # ビルド成果物（GitHub Actionが実際に実行するコード）
+│   ├── packages/
+│   │   └── qa-sensei-engine/     # コンパイル済みのエンジンモジュール
+│   └── src/
+│       ├── index.js              # Actionのエントリーポイント
+│       └── services/
+├── packages/
+│   └── qa-sensei-engine/         # QAロジック・型チェックエンジンのソースコード
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── src/
+│           ├── engine/
+│           │   └── codeGenerator.ts # QAコード生成ロジック
+│           ├── index.ts
+│           ├── services/
+│           │   ├── parser.ts     # PR差分・AST解析
+│           │   └── tscRunner.ts  # TypeScript型チェック実行
+│           └── types/
+│               └── index.ts
+└── src/                          # GitHub Action用のメインソースコード
+    ├── index.ts                  # Actionエントリーポイント原番
+    └── services/
+        └── qaGeneratorService.ts # QA生成オーケストレーション
 ```
